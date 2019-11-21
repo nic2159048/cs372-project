@@ -1,4 +1,4 @@
-# GOlang
+# GOlang ![Go logo](https://golang.org/lib/godoc/images/go-logo-blue.svg)
 ### Introduction
 [GOlang](https://golang.org/) (a.k.a. GO) is relatively new langauge (2009) created by google. This document gives a brief introduction to GO, focusing mostly on GO's characteristics and classification as a programming language.
 
