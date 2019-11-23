@@ -11,5 +11,3 @@ Additional information and downloads of Go's compiler are available at [golang.o
 
 # Creative Program
 We can add a description of the program we make in part 3 of the assignment here.
-
-![Go's Mascot Gopher](http://127.0.0.1:3999/static/img/gopher.png)
