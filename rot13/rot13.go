@@ -1,4 +1,7 @@
-package main
+/*
+Package rot13 is a simple ceaser cipher for making questionable content opt-in.
+*/
+package rot13
 
 import (
 	"io"
@@ -7,25 +10,22 @@ import (
 	"unicode"
 )
 
-/* By giving this an upper-case name it becomes extern. */
-type ROT13Reader struct {
-	r io.Reader
+// Reader ciphers and deciphers text in rot13.
+type Reader struct {
+	reader io.Reader
 }
 
-/*	The implementation of this method makes the ROT13Reader into a Reader by
-	implicitly satisfying the Reader interface!
-*/
-func (reader ROT13Reader) Read(out []byte) (int, error) {
-	n, err := reader.r.Read(out)
+/*	Read decodes or encodes text read in from a wrapped Reader.
+ */
+func (r Reader) Read(out []byte) (int, error) {
+	n, err := r.reader.Read(out)
 
 	if err != nil {
 		return n, err
 	}
 
 	for i := range out {
-		ch := rune(out[i])
-
-		if unicode.IsLetter(ch) {
+		if ch := rune(out[i]); unicode.IsLetter(ch) {
 			ltr := out[i] - 13
 
 			// wrap alphabet
@@ -42,7 +42,7 @@ func (reader ROT13Reader) Read(out []byte) (int, error) {
 
 func main() {
 	s := strings.NewReader("Lbh penpxrq gur pbqr!")
-	r := ROT13Reader{s}
+	r := Reader{s}
 	io.Copy(os.Stdout, &r)
 }
 
