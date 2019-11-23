@@ -79,6 +79,10 @@ And the Go equivilent:
 ```GO
 f func(func(int,int) int, int) func(int, int) int
 ```
-One of goals of the seperate syntax was to make a GO declaration left->right readable. The above can be read: "f is a func taking a func taking two ints and two ints and returning a function taking two ints and returning an int". It's still a mouthful--but it's far less obsfucated if you ask me!
+One of goals of the seperate syntax was to make a GO declaration left->right readable. 
+The above can be read: 
+`f is a func taking a func taking two ints and two ints and returning a function taking two ints and returning an int.` 
+It's still a mouthful--but it's far less obsfucated if you ask me!
+
 [learn more](https://blog.golang.org/gos-declaration-syntax)
 [GO's notation is defined in Extended Backus-Naur Form (EBNF)](https://golang.org/ref/spec#Notation)
