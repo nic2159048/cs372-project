@@ -1,4 +1,4 @@
-# ![Go logo](https://golang.org/lib/godoc/images/go-logo-blue.svg) i.e. GOlang
+# ![GOlang](https://golang.org/lib/godoc/images/go-logo-blue.svg)
 ### Introduction
 [GOlang](https://golang.org/) (a.k.a. Go) is relatively new langauge (2009) created by google. This document gives a brief introduction to Go, focusing mostly on Go's characteristics and classification as a programming language.
 
@@ -23,15 +23,15 @@ A composite type is defined based on relationships with basic and composite type
 
 In the future GO will have custom-type generics.
 
-[Type System Overview](https://go101.org/article/type-system-overview.html)
+ - <cite>[Type System Overview](https://go101.org/article/type-system-overview.html)</cite>
 
 ## Control Structures
 ## Semantics
 ## Desirable Language Characteristics
 ### Go Is FAST
 Built-in concurrency, an awesome compiler, and other features make Go a fast (i.e. high-performance) language.
- - [Achieving Concurrency in Go](https://medium.com/rungo/achieving-concurrency-in-go-3f84cbf870ca)
- - [Five Things that Make Go Fast](https://dave.cheney.net/2014/06/07/five-things-that-make-go-fast)
+<cite>[Achieving Concurrency in Go](https://medium.com/rungo/achieving-concurrency-in-go-3f84cbf870ca)</cite>
+<cite>[Five Things that Make Go Fast](https://dave.cheney.net/2014/06/07/five-things-that-make-go-fast)</cite>
 
 ### Uniformity & Minimalism
 Another common fault in OO languages is verbosity. Consider this Java program:
@@ -46,7 +46,7 @@ public class HelloWorld {
 
 }
 ```
-[Java's HelloWorld tutorial](https://docs.oracle.com/javase/tutorial/getStarted/cupojava/index.html)
+ - <cite>[Java's HelloWorld tutorial](https://docs.oracle.com/javase/tutorial/getStarted/cupojava/index.html)</cite>
 
 And compare it to this:
 ```GO
@@ -58,7 +58,7 @@ func main() {
 	fmt.Println("Hello, 世界")
 }
 ```
-[GO's Hello World widget](https://golang.org/)
+ - <cite>[GO's Hello World widget](https://golang.org/)</cite>
 
 In general Go attempts to be as minimal as possible to avoid unneeded characters, semicolons, and types (indeed, the type is only needed if it can't be discerend by other means). While minimalism sometimes has negative consequences (e.g. less readable, requireing knowledge of sub-standard acronyms and abbreviations) it can also be wonderful.
 
@@ -84,5 +84,5 @@ The above can be read:
 `f is a func taking a func taking two ints and two ints and returning a function taking two ints and returning an int.` 
 It's still a mouthful--but it's far less obsfucated if you ask me!
 
-[learn more](https://blog.golang.org/gos-declaration-syntax)
-[GO's notation is defined in Extended Backus-Naur Form (EBNF)](https://golang.org/ref/spec#Notation)
+ - <cite>[Go's Declaration Syntax](https://blog.golang.org/gos-declaration-syntax)</cite>
+ - <cite>[Go's Specification (with Extended Backus-Naur Form)](https://golang.org/ref/spec#Notation)</cite>
