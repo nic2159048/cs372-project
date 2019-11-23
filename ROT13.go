@@ -7,6 +7,7 @@ import (
 	"unicode"
 )
 
+/* By giving this an upper-case name it becomes extern. */
 type ROT13Reader struct {
 	r io.Reader
 }
@@ -44,3 +45,11 @@ func main() {
 	r := ROT13Reader{s}
 	io.Copy(os.Stdout, &r)
 }
+
+/*
+	Test Cases
+
+	https://rot13.com/
+	If this file is correctly encoded and decoded; then the ROT13/rot13 cipher is probably working.
+	Vs guvf svyr vf pbeerpgyl rapbqrq naq qrpbqrq; gura gur EBG13/ebg13 pvcure vf cebonoyl jbexvat.
+*/
