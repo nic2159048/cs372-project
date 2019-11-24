@@ -1,4 +1,4 @@
-# csc372-program3
+# csc372-program4
 A repo for all parts of our program 4 project in which we will explore the Go programming language.
 
 We chose Go (a.k.a. Golang) because we were interested in a high-performance langauge which was a little more established than Rust.
