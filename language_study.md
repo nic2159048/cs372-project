@@ -63,7 +63,7 @@ for index, value := range myArray {
 Go is statically scoped; has static constants; has a garbage collector; uses static, stack-dynamic, and heap-dynamic allocation; and supports enclosures.
 
 ## Desirable Language Characteristics
-### Efficiency -- Go Is FAST
+### Efficiency -> Go Is FAST
 Built-in concurrency, an awesome compiler, and other features make Go a fast (i.e. high-performance) language. Unlike other languages Go's goroutines allow developers to easily write platform-independent parallel code.
 
 <cite>[Achieving Concurrency in Go](https://medium.com/rungo/achieving-concurrency-in-go-3f84cbf870ca)</cite>
@@ -82,7 +82,7 @@ The array and slice types are as almost as easy-to-use as Python's list, but fee
 ## Data Abstractions
 For the most part Go's compiler decides for the programmer what variables will be stack-dynamic and which will be heap-dynamic.
 
-## Syntax -> Minimalism
+## Syntax & Minimalism
 A common fault in OO languages is verbosity. Consider this Java program:
 ```Java
 package helloworld;
