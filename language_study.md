@@ -70,11 +70,13 @@ Built-in concurrency, an awesome compiler, and other features make Go a fast (i.
 <cite>[Five Things that Make Go Fast](https://dave.cheney.net/2014/06/07/five-things-that-make-go-fast)</cite>
 
 ### Extensibility
+In Go you are able to add new data types in the form of structs, but Go does not allow you to then extend a keyword to work on that new type. For instance, if you wanted to implement the range keyword, which iterates over the elements in a list, for a linked list struct you would be unable to do so as you can only use range on the built in language constructions. 
 
 ### Regularity / Uniformity
 The designers of Go did a lot of work to clean up the C-family syntax to ensure the language would be more uniform. Additionaly, Go's rules about package and repo organization guarante that the url will always match the file tree making it easy to prevent conflicts and trace the source of a package. Also, Go enforces minimal documentation standards and other things which at first are hard; but overall are for the good.
 
 ### Security/Reliability
+Go does not have any exception handling and instead elects to use the error type to notify the user of an abnormal state. This is done by returning an error variable as well as whatever that function was supposed to return, since Go allows the return of multiple elements this does not take away from the languages functionality. Go is also statically typed since the types of all variables can be inferred and does not restrict aliasing as you can have as many references to the same object as you want like in C.
 
 ### Slices
 The array and slice types are as almost as easy-to-use as Python's list, but feel as close to the memory as C's pointers. The same data structure easly works as a stream, and can eithr be backed by a static array or dynamically resized. 
