@@ -1,12 +1,10 @@
 /*
-Links to other files
+Uses the rot13 package to encrypt and decrypt files.
 
-sample.txt.rot13
+This program attempts to conform to Go's style guidelines.
 
-If this file is correctly encoded and decoded; then the ROT13/rot13 cipher is probably working.
-Vs guvf svyr vf pbeerpgyl rapbqrq naq qrpbqrq; gura gur EBG13/ebg13 pvcure vf cebonoyl jbexvat.
-Lbh penpxrq gur pbqr!
-You cracked the code!
+Language Project: https://github.com/ivanthewebber/csc372-program4
+Language Study: https://github.com/ivanthewebber/csc372-program4/blob/master/language_study.md
 */
 package main
 
