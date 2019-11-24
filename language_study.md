@@ -2,39 +2,88 @@
 ### Introduction
 [GOlang](https://golang.org/) (a.k.a. Go) is relatively new langauge (2009) created by google. This document gives a brief introduction to Go, focusing mostly on Go's characteristics and classification as a programming language.
 
+Go was written to be more friendly to development than other languages. However, this doesn't mean it's a breeze. Go's tools require that developers follow a set of rules regulating file-trees, repositories, distribution, naming, and documentation. Of course, to a degreee one can opt out, but by keeping things consistent the language can work with itself much better.
+
+Another goal of the language designers was to reduce verbosity and inconsistencies as experienced in Java and C/C++ respectively. In general the langauge feels naked due to the lack of parenthesis around for-loops (and etc.) and absence of classes. Like c this language is very close to the memory, but it's a very different feel.
+
 ## History and Current Status
-Go was first released in November of 2009. Afterwards the Go team at Google continued to work on developing the project and building a community of interested developers. Go's development has been shaped by the community's feedback. As a result Go is a more intuitive language, very centralized, and substantially self-branded language (Go sounds like Gopher which has become a mascot for the language). 
+Go was first released in November of 2009. Afterwards the Go team at Google continued to work on developing the project and building a community to provide feedback as the language developed. At [golang.org] and [blog.golang.org] one can find documentation, guides, and compilers for Go.
 
 Go is [currently on version](https://golang.org/project/#go1) 1.13 (as of November 11, 2019). The standard library is still expanding and the development community is being careful to make smart choices for Go's future.
 
 Another emerging hot technology is Web Assembly. Go's compiler can compile to Web Assembly, so this might be another adoption point.
 
 ## Paradigm
-Go truly escapes the imperative paradigm with built-in concurrency via goroutines and channels, but Go doesn't really fit in with the Object Oriented languages either. Unlike the common OO languages Go doesn't have a class, but it has interfaces which allow one to supply a list of functions that should exist to act on a type.
+Go truly escapes the imperative paradigm with built-in concurrency via goroutines and channels, but Go doesn't really fit in with the object-oriented (OO) languages either. Unlike the common OO languages Go doesn't have a class, but it has two tools that serve the same purpose. First Go's functions have an optional acts-on parameter (i.e. a parameter which comes before a function connected with a dot). Additionally Go has interfaces which describe a group of methods that could act on a type. Any type that has functions of the same signature to act on it implicitly implements the interface.
+
+Because Go requires a file-system naming scheme a class that implements an interface is internally given the same name, but outside is refered to by the enclosing package. For an example of this see [our rot13 package](rot13) which declares a Reader type that implements Reader by having a Read method. [In our rot13 program](main) we use this class for applying the rotation.
 
 ## Typing System
-Go's typing system enables it to be consistent and secure without thrawrting bitwise-wizardry.
+Unlike Java and C-family languages, Go doesn't require a type declaration every time a variable is declared. If the type can be implied from the return of a function, then it can be ommited. However, the `:=` operator must be used for declaration whereas the `=` is solely for assignment.
 
 ### Basic Types
-Go's `int`, `uint`, `float`, and `bool` types are simmilar to those in the C-family, but Go also has specific-size varients like ECMAScript's TypedArrays (e.g. `int32`, `float64`). Go also has built-in `complex` and `string` types simmilar to those in C++. For representing unicode characters Go has `rune`, an alias for `uint32`.
+Go's `int`, `uint`, `float`, and `bool` types are simmilar to those in the C-family, but Go also has specific-size varients like ECMAScript's TypedArrays (e.g. `int32`, `float64`). These are useful when precision is necessary or bitwise-wizardry is desired. Go also has built-in `complex` and `string` types simmilar to those in C++.
+
+Go also has c-style pointers, a struct, and a type definition that is very simmilar to C's typedef.
 
 ### Composite Types
-A composite type is defined based on relationships with basic and composite types. Like C, Go has `pointers`, `structs`, and `arrays`. Go also has `slice` types which are a dynamic containers, and `map` types which are (hashed) associative arrays. Go also has channel types for synchronization among goroutines and interfaces.
+A composite type is defined based on relationships with basic and composite types. Like C, Go has `pointers`, `structs`, and `arrays`. Go also has `slice` types which are dynamic containers (like vectors), and `map` types which are (hashed) associative arrays. Go also has channel types for synchronization among goroutines and interfaces.
 
-In the future GO will have custom-type generics.
+Go also has a built-in string type (it's very simmilar to the slice). For representing unicode characters Go has `rune`, an alias for `uint32`. Arrays, slices, strings, and maps can be iterated over (the string class takes care of the unicode stuff).
+
+Finally, Go's functions are first-class objects meaning they can be parameters, return values, and functions can be on the righthand-side of assignments.
+
+In the future Go will have custom-type generics.
 
  - <cite>[Type System Overview](https://go101.org/article/type-system-overview.html)</cite>
 
 ## Control Structures
+Go has a single loop, the for loop, with all the clauses optional. Go has C-style `if`, and a switch which is only a shorthand for an if-else-if...-else block. Go also has a defer keyword that is simmilar to finally in Java. Go also has labeled break statements and goto.
+
+```Go
+if length := len(data); length == 0 {
+	// do something...
+} else if (length > 100) {
+	// do something...
+} else {
+	// length is visible...
+} // and length is invisible
+
+for i := 0; i < 10; i += 1 {
+	// Go's for loops are so naked...
+	fmt.Printf("%d", i)
+}
+
+for index, value := range myArray {
+	// do something...
+}
+```
+
 ## Semantics
+Go is statically scoped; has static constants; has a garbage collector; uses static, stack-dynamic, and heap-dynamic allocation; and supports enclosures.
+
 ## Desirable Language Characteristics
-### Go Is FAST
-Built-in concurrency, an awesome compiler, and other features make Go a fast (i.e. high-performance) language.
+### Efficiency -- Go Is FAST
+Built-in concurrency, an awesome compiler, and other features make Go a fast (i.e. high-performance) language. Unlike other languages Go's goroutines allow developers to easily write platform-independent parallel code.
+
 <cite>[Achieving Concurrency in Go](https://medium.com/rungo/achieving-concurrency-in-go-3f84cbf870ca)</cite>
 <cite>[Five Things that Make Go Fast](https://dave.cheney.net/2014/06/07/five-things-that-make-go-fast)</cite>
 
-### Uniformity & Minimalism
-Another common fault in OO languages is verbosity. Consider this Java program:
+### Extensibility
+
+### Regularity / Uniformity
+The designers of Go did a lot of work to clean up the C-family syntax to ensure the language would be more uniform. Additionaly, Go's rules about package and repo organization guarante that the url will always match the file tree making it easy to prevent conflicts and trace the source of a package. Also, Go enforces minimal documentation standards and other things which at first are hard; but overall are for the good.
+
+### Security/Reliability
+
+### Slices
+The array and slice types are as almost as easy-to-use as Python's list, but feel as close to the memory as C's pointers. The same data structure easly works as a stream, and can eithr be backed by a static array or dynamically resized. 
+
+## Data Abstractions
+For the most part Go's compiler decides for the programmer what variables will be stack-dynamic and which will be heap-dynamic.
+
+## Syntax -> Minimalism
+A common fault in OO languages is verbosity. Consider this Java program:
 ```Java
 package helloworld;
 
@@ -60,14 +109,10 @@ func main() {
 ```
  - <cite>[GO's Hello World widget](https://golang.org/)</cite>
 
-In general Go attempts to be as minimal as possible to avoid unneeded characters, semicolons, and types (indeed, the type is only needed if it can't be discerend by other means). While minimalism sometimes has negative consequences (e.g. less readable, requireing knowledge of sub-standard acronyms and abbreviations) it can also be wonderful.
+In general Go attempts to be as minimal as possible to avoid unneeded characters, semicolons, and types (indeed, the type is only needed if it can't be discerend by other means). While minimalism sometimes has negative consequences (e.g. less readable, requireing knowledge of sub-standard acronyms and abbreviations), overall it removes a lot of fluff from the language. 
 
-Furthermore, the verbose vs. minimalist approaches can be seen in each language's hello-world tutorials.
+To truly see the verbose vs. minimalist comparison between Java and Go check out each language's hello-world tutorials.
 
-### category 3
-### category 4
-## Data Abstractions
-## Syntax
 ### Type and Declaration
 Most C-family languages use a syntax for type and declaration that is similar to a normal expression, but with types explicit. This is most clear for function pointers: the declaration `int (*fp)(int a, int b);` is meant to look like the expression `fp(a,b);` which evaluates to an int.
 
