@@ -1,5 +1,5 @@
 # cs372-project
-[](https://github.com/ivanthewebber/csc372-program4.git)
+[](https://github.com/nic2159048/cs372-project)
 
 A repo for all parts of our program 4 project in which we will explore the Go programming language.
 
