@@ -1,5 +1,5 @@
 /*
-This program attempts to conform to Go's style guidelines.
+uses a simple cipher to rotate letters around the alphabet
 
 Language Project: https://github.com/nic2159048/cs372-project
 Language Study: https://github.com/nic2159048/cs372-project/blob/master/language_study.md
