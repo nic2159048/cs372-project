@@ -1,1 +1,1 @@
-
+Do you like music videos, but don't have the time to make them, then this is the program for you. mandelVis.go visualizes a wav file through its samples and creates a sequence of mandelbrots from them.
