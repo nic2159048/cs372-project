@@ -1,1 +1,3 @@
-Do you like music videos, but don't have the time to make them, then this is the program for you. mandelVis.go visualizes a wav file through its samples and creates a sequence of mandelbrots from them.
+Do you like music videos, but don't have the time to make them, then this is the program for you. mandelVis.go visualizes a wav file through its samples and creates a sequence of mandelbrots from them. The process is fairly simple, we read the different samples from the given file and convert that to a -x and -y option for the mandelbrot.go. The samples combined with an incremental -r rotation value means we get slight movement across each jpg, but when converted to frames for a video becomes an animation. 
+
+To use this program you need the go-wav library from https://github.com/youpy/go-wav, as well as ffmpeg from https://www.ffmpeg.org/. Go-wav allows us to read wav files while ffmpeg allows us to combine them into a video and merge that video with the wav file.
